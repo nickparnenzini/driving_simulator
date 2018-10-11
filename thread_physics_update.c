@@ -53,9 +53,7 @@ void *create_physics_update(void* arg)
 
 			if(c->fuel_level > 0.0)
 			{
-						/*****************************/
 						/* compute the engine torque */  
-						/*****************************/
 						if((c->gear_mode == D) || (c->gear_mode == R))
 						{
 								/* if the car has just started and brake pedal is not pressed */
@@ -140,8 +138,6 @@ void *create_physics_update(void* arg)
 						/* gear and rpm update */
 						if(c->gear_mode == D)
 							compute_gear(c); 	
-							
-
 			}	
 			else
 			{		
@@ -157,16 +153,11 @@ void *create_physics_update(void* arg)
 			//sem_post(&c->mutex_car);
 			pthread_mutex_unlock(&c->mutex_car);   
 
-			/*******************************************/
 			/* last operations at the end of the cycle */
-			/*******************************************/
 			t_next = timespec_add(&t_next, &T_input);  
 
 			clock_nanosleep(CLOCK_MONOTONIC, TIMER_ABSTIME, &t_next, NULL);
-
-
 	}
 
 	pthread_exit(NULL);
-
 }

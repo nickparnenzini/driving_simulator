@@ -254,10 +254,7 @@ void compute_gear(struct car_t *c)
 		/* compute the denominator value */
 		div_value = 60.0 * c->cartype->gear_ratio * c->cartype->differential_ratio;  
 
-		/*******************************************************/
 		/* compute the maximum and minimum speed for each gear */
-		/*******************************************************/
-
 		/* maximum speed value computation */
 		v_max = (float)(c->cartype->wheel_radius * 2.0 * M_PI * RPM_SHIFT_GEAR )/div_value; 
 

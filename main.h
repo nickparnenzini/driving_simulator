@@ -62,9 +62,7 @@
 #define alpha 0.01 // constant value 
 #define tau_bs 0.2 // s reaction time delay
 
-/**********************************************/
-/*      TECHNICAL DATA PORSCHE BOXER S        */
-/**********************************************/
+// Technical data for porsche boxter S
 
 /* Fuel consumption: 
    -) city : 21 mpg 
@@ -107,10 +105,7 @@
 
 pthread_t tid[3];
 
-
-/**********************************/
-/* variables used to plot results */
-/**********************************/
+// Variables used to plot results */
 char update_val[MAX_OUTPUT][100];
 
 extern int x_pos;  
@@ -159,16 +154,13 @@ extern CARTYPE cartypes[1];
 extern int end_simulation; 
 
 
-/******************************************/
-/*         time functions                 */
-/******************************************/
+// Time functions
 struct timespec msec_to_timespec(unsigned int msec);
 struct timespec timespec_add(struct timespec *t1, struct timespec *t2);
 unsigned int timespec_to_msec(struct timespec *ts);
 struct timespec timespec_diff(struct timespec *old_time, struct timespec *new_time);
-/*****************************************/
-/*         input functions 
-/*****************************************/
+
+// Input functions
 void ignition_on(struct car_t *c);
 void ignition_off(struct car_t *c);
 void accelerate(struct car_t *c);
@@ -183,18 +175,15 @@ void cruise_control_off(struct car_t *c);
 void change_wheels(struct car_t *c);
 void refill_fuel(struct car_t *c);
 void input_keyboard(struct car_t *c);
-/*************************************/
-/*  function used to check if a key has been released 
-/*************************************/
+
+// Function used to check if a key has been released 
 int keyrel(int k);
-/*************************************/
-/*  functions used to initialize the shared structure
-/*************************************/
+
+// Functions used to initialize the shared structure
 void init_cartypes();
 void initialize_car(struct car_t *c, CARTYPE *cartype);
-/*******************************************************/
-/*   functions used for vehicle dynamics 
-/*******************************************************/
+
+// Functions used for vehicle dynamics 
 float max_torque_computation(float rpm);
 double compute_min(double val1, double val2);
 float compute_braking_torque(float brake_input, float Vx, float wheel_radius);
@@ -206,16 +195,9 @@ void compute_gear(struct car_t *c);
 float compute_fuel_consumption(float position, float fuel_level, float fuel_efficiency);
 float compute_v_max();
 char compute_gear_mode(int gear_mode);
-/********************************************************/
-/*   threads 
-/********************************************************/
+
+// Threads 
 void *create_physics_update(void* arg);
 void *create_view(void *arg);
 void *create_input(void *arg);
 void create_threads(struct car_t *c);
-
-
-
-
-
-
